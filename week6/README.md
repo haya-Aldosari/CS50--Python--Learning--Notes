@@ -1540,3 +1540,294 @@ with sr.Microphone() as source:
 
 ---
 
+## Video 25: Pillow in Python
+
+`Pillow` is a Python library used for working with images.
+
+It allows us to:
+
+- Open images
+- Display images
+- Save images
+- Apply filters
+- Convert images
+- Crop images
+
+---
+
+## Install Pillow
+
+```bash
+pip install pillow
+```
+
+---
+
+## Import Pillow
+
+To work with images:
+
+```python
+from PIL import Image
+```
+
+If we want to use image filters:
+
+```python
+from PIL import Image, ImageFilter
+```
+
+---
+
+## Open an Image
+
+First, we can store the image in a variable:
+
+```python
+img = Image.open("image.jpg")
+```
+
+`Image.open()` opens the image file using its name and extension.
+
+For example:
+
+```python
+img = Image.open("before.jpg")
+```
+
+---
+
+## Show an Image
+
+To display the image:
+
+```python
+img.show()
+```
+
+This opens the image so we can see it.
+
+---
+
+## Save an Image
+
+To save an image:
+
+```python
+img.save("new_image.jpg")
+```
+
+Inside `save()`, we specify the new image name and its extension.
+
+---
+
+# Image Filters
+
+Pillow provides different types of image filters.
+
+To use them:
+
+```python
+from PIL import Image, ImageFilter
+```
+
+In the example, a blur filter was applied to an image to compare the **before** and **after** results.
+
+---
+
+## Box Blur
+
+One of the available filters is:
+
+```python
+ImageFilter.BoxBlur()
+```
+
+Example:
+
+```python
+filtered_img = img.filter(ImageFilter.BoxBlur(5))
+```
+
+The number inside `BoxBlur()` controls the strength of the blur.
+
+A larger number produces a stronger blur effect.
+
+The new image can then be saved:
+
+```python
+filtered_img.save("after.jpg")
+```
+
+This makes it possible to compare the original image with the filtered image.
+
+---
+
+# Convert an Image
+
+The `convert()` method can be used to change the image mode.
+
+Example:
+
+```python
+converted_img = img.convert("L")
+```
+
+`"L"` converts the image into a grayscale image.
+
+The converted image can also be displayed or saved.
+
+```python
+converted_img.show()
+```
+
+---
+
+# Crop an Image
+
+The `crop()` method is used to select and keep only a specific part of an image.
+
+First, a variable called `box` can be created:
+
+```python
+box = (100, 100, 400, 400)
+```
+
+Then it can be passed to `crop()`:
+
+```python
+cropped_img = img.crop(box)
+```
+
+---
+
+## Understanding the Box Values
+
+The `box` contains four numbers:
+
+```python
+(left, upper, right, lower)
+```
+
+For example:
+
+```python
+box = (100, 100, 400, 400)
+```
+
+means:
+
+- `100` → Left position
+- `100` → Upper position
+- `400` → Right position
+- `400` → Lower position
+
+These values define the area of the image that will be kept.
+
+The crop starts from the **left and upper coordinates** and ends at the **right and lower coordinates**.
+
+---
+
+## Example
+
+```python
+from PIL import Image, ImageFilter
+
+img = Image.open("before.jpg")
+
+img.show()
+
+filtered_img = img.filter(ImageFilter.BoxBlur(5))
+
+filtered_img.save("after.jpg")
+
+converted_img = img.convert("L")
+
+box = (100, 100, 400, 400)
+
+cropped_img = img.crop(box)
+
+cropped_img.show()
+```
+
+---
+
+## Video 26: QR Code Generation in Python
+
+This lesson explains how to generate a QR code in Python using the `qrcode` library and work with the generated image using `Pillow`.
+
+Both libraries need to be installed before using them.
+
+```bash
+pip install qrcode
+pip install pillow
+```
+
+## Importing the Libraries
+
+```python
+import qrcode
+from PIL import Image
+```
+
+- `qrcode` is used to generate the QR code.
+- `Pillow` is used to work with the generated image.
+
+## Creating the QR Code
+
+A variable can be created to store the generated QR code:
+
+```python
+img = qrcode.make("Hello World")
+```
+
+Here:
+
+```python
+qrcode.make()
+```
+
+creates the QR code.
+
+The value written inside `make()` is the content that the QR code will contain.
+
+For example:
+
+```python
+img = qrcode.make("https://example.com")
+```
+
+When the QR code is scanned, it will open or display the value stored inside it.
+
+## Showing the QR Code
+
+The generated QR code can be displayed using:
+
+```python
+img.show()
+```
+
+This opens the generated image so we can see the QR code.
+
+## Saving the QR Code
+
+The QR code can also be saved as an image:
+
+```python
+img.save("qrcode.png")
+```
+
+The file name and image extension are written inside `save()`.
+
+## Complete Example
+
+```python
+import qrcode
+from PIL import Image
+
+img = qrcode.make("Hello World")
+
+img.show()
+img.save("qrcode.png")
+```
+
