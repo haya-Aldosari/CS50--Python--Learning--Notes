@@ -1364,3 +1364,179 @@ New data is added to the end of the file instead of replacing the existing conte
 
 If the file does not exist, it can be created.
 
+## Video 23: Text to Speech in Python
+
+Text to Speech allows a Python program to convert written text into spoken audio.
+
+The main library used is:
+
+```python
+pyttsx3
+```
+
+---
+
+## Install the Required Library
+
+Install `pyttsx3` using:
+
+```bash
+pip install pyttsx3
+```
+
+---
+
+## Import the Library
+
+```python
+import pyttsx3
+```
+
+---
+
+## Initialize the Speech Engine
+
+Create a text-to-speech engine using:
+
+```python
+engine = pyttsx3.init()
+```
+
+The engine is responsible for converting the text into spoken audio.
+
+---
+
+## Make Python Speak
+
+Use `say()` to specify the text that should be spoken:
+
+```python
+engine.say("Hello World")
+```
+
+Then run the speech engine using:
+
+```python
+engine.runAndWait()
+```
+
+---
+
+## Complete Example
+
+```python
+import pyttsx3
+
+# Initialize the text-to-speech engine
+engine = pyttsx3.init()
+
+# Add text to be spoken
+engine.say("Hello World")
+
+# Run the speech engine
+engine.runAndWait()
+```
+
+---
+
+## Video 24: Speech Recognition in Python
+
+Speech Recognition allows a Python program to listen to spoken audio through the microphone and convert it into text.
+
+The main library used is:
+
+```python
+speech_recognition
+```
+
+`PyAudio` is also needed to access the microphone.
+
+---
+
+## Install the Required Libraries
+
+Install SpeechRecognition:
+
+```bash
+pip install SpeechRecognition
+```
+
+Install PyAudio:
+
+```bash
+pip install PyAudio
+```
+
+---
+
+## Import the Library
+
+```python
+import speech_recognition as sr
+```
+
+---
+
+## Create a Recognizer
+
+Create an object that will recognize the spoken audio:
+
+```python
+listener = sr.Recognizer()
+```
+
+---
+
+## Access the Microphone
+
+Use `Microphone()` to receive audio from the microphone:
+
+```python
+with sr.Microphone() as source:
+    voice = listener.listen(source)
+```
+
+`listen()` waits for the user to speak and stores the recorded audio.
+
+---
+
+## Convert Speech to Text
+
+The recorded audio can be converted into text using:
+
+```python
+command = listener.recognize_google(voice)
+```
+
+Then the recognized text can be printed:
+
+```python
+print(command)
+```
+
+---
+
+## Complete Example
+
+```python
+import speech_recognition as sr
+
+# Create the speech recognizer
+listener = sr.Recognizer()
+
+# Access the microphone
+with sr.Microphone() as source:
+    print("Listening...")
+
+    # Listen to the user's voice
+    voice = listener.listen(source)
+
+    # Convert speech to text
+    command = listener.recognize_google(voice)
+
+    # Print the recognized text
+    print(command)
+```
+
+---
+
