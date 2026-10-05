@@ -337,3 +337,67 @@ price
 
 Each column can have a specific data type.
 
+
+## Video 3: SQLite Dot Commands
+
+SQLite provides special commands that start with a dot `.`.
+
+These commands are used inside the SQLite terminal.
+
+## `.mode csv`
+
+Before importing a CSV file, the mode can be changed to CSV:
+
+```sql
+.mode csv
+```
+
+This tells SQLite that the data being used is in CSV format.
+
+## `.import`
+
+The `.import` command is used to import data from a CSV file into a table.
+
+```sql
+.import FILE TABLE
+```
+
+Example:
+
+```sql
+.import favorites.csv favorites
+```
+
+Here:
+
+- `favorites.csv` is the CSV file.
+- `favorites` is the table name.
+
+The data from the CSV file is imported into the SQLite database.
+
+## `.schema`
+
+The `.schema` command shows the structure of the database table:
+
+```sql
+.schema
+```
+
+It can be used to see the table and its columns after importing the data.
+
+## Example
+
+```sql
+sqlite3 favorites.db
+.mode csv
+.import favorites.csv favorites
+.schema
+```
+
+This:
+
+1. Opens or creates `favorites.db`.
+2. Sets the mode to CSV.
+3. Imports the CSV file into a table called `favorites`.
+4. Shows the structure of the table.
+
