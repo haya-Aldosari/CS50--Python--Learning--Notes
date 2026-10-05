@@ -401,3 +401,209 @@ This:
 3. Imports the CSV file into a table called `favorites`.
 4. Shows the structure of the table.
 
+## Video 4: CRUD: Read Data
+
+## CRUD
+
+CRUD stands for:
+
+```text
+Create
+Read
+Update
+Delete
+```
+
+In this lesson, the focus is on:
+
+```text
+Read
+```
+
+Reading data from a database is done using `SELECT`.
+
+## `SELECT`
+
+The basic syntax is:
+
+```sql
+SELECT column
+FROM table;
+```
+
+For example:
+
+```sql
+SELECT language
+FROM favorites;
+```
+
+This returns the values stored in the `language` column from the `favorites` table.
+
+## Selecting More Than One Column
+
+More than one column can be selected:
+
+```sql
+SELECT language, problem
+FROM favorites;
+```
+
+## Selecting All Columns
+
+The `*` symbol can be used to select all columns:
+
+```sql
+SELECT *
+FROM favorites;
+```
+
+## SQL Functions
+
+SQL provides functions that can be used while reading data.
+
+### `COUNT`
+
+`COUNT` counts the number of rows:
+
+```sql
+SELECT COUNT(*)
+FROM favorites;
+```
+
+### `DISTINCT`
+
+`DISTINCT` returns unique values without duplicates:
+
+```sql
+SELECT DISTINCT language
+FROM favorites;
+```
+
+It can also be used with `COUNT`:
+
+```sql
+SELECT COUNT(DISTINCT language)
+FROM favorites;
+```
+
+## Other Functions
+
+Other SQL functions mentioned include:
+
+```text
+AVG
+MAX
+MIN
+LOWER
+UPPER
+```
+
+They can be used when reading and working with data in a database.
+
+## Video 5: Filtering Data in SQL
+
+## `WHERE`
+
+`WHERE` is used to filter rows based on a condition.
+
+Example:
+
+```sql
+SELECT *
+FROM favorites
+WHERE language = 'Python';
+```
+
+This returns only the rows where the language is Python.
+
+## Combining Conditions
+
+Conditions can be combined using operators such as:
+
+```sql
+AND
+OR
+```
+
+Example:
+
+```sql
+SELECT *
+FROM favorites
+WHERE language = 'Python'
+AND problem = 'Mario';
+```
+
+## `ORDER BY`
+
+`ORDER BY` is used to sort the results.
+
+```sql
+SELECT *
+FROM favorites
+ORDER BY language;
+```
+
+The results can also be sorted in descending order:
+
+```sql
+SELECT *
+FROM favorites
+ORDER BY language DESC;
+```
+
+## `GROUP BY`
+
+`GROUP BY` groups rows that have the same value.
+
+For example:
+
+```sql
+SELECT language, COUNT(*)
+FROM favorites
+GROUP BY language;
+```
+
+This groups the rows by language and counts how many times each language appears.
+
+## Combining `GROUP BY` and `ORDER BY`
+
+The grouped results can also be sorted:
+
+```sql
+SELECT language, COUNT(*)
+FROM favorites
+GROUP BY language
+ORDER BY COUNT(*) DESC;
+```
+
+This displays the languages starting with the one that appears the most.
+
+## `LIMIT`
+
+`LIMIT` controls how many rows are returned.
+
+```sql
+SELECT language, COUNT(*)
+FROM favorites
+GROUP BY language
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+```
+
+This returns only the first result.
+
+## Combining SQL Clauses
+
+Several SQL clauses can be used together:
+
+```sql
+SELECT language, COUNT(*)
+FROM favorites
+WHERE language IS NOT NULL
+GROUP BY language
+ORDER BY COUNT(*) DESC
+LIMIT 3;
+```
+
