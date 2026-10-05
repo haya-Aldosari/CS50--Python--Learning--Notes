@@ -606,4 +606,148 @@ GROUP BY language
 ORDER BY COUNT(*) DESC
 LIMIT 3;
 ```
+## Video 6: `LIKE` in SQL
+
+`LIKE` is used with `WHERE` to search for text that matches a specific pattern.
+
+Example:
+
+```sql
+SELECT *
+FROM favorites
+WHERE language LIKE 'P%';
+```
+
+This searches for values that start with `P`.
+
+## `%` Wildcard
+
+The `%` symbol represents any number of characters.
+
+### Starts With
+
+```sql
+WHERE language LIKE 'P%';
+```
+
+This matches values that start with `P`.
+
+### Ends With
+
+```sql
+WHERE language LIKE '%n';
+```
+
+This matches values that end with `n`.
+
+### Contains
+
+```sql
+WHERE language LIKE '%yth%';
+```
+
+This matches values that contain `yth` anywhere in the text.
+
+## `_` Wildcard
+
+The `_` symbol represents exactly one character.
+
+Example:
+
+```sql
+WHERE language LIKE 'P_thon';
+```
+
+The underscore can match one character in that position.
+
+## Using `NOT LIKE`
+
+`NOT LIKE` can be used to return values that do not match a pattern.
+
+```sql
+SELECT *
+FROM favorites
+WHERE language NOT LIKE 'P%';
+```
+
+## Video 7: INSERT, UPDATE, DELETE
+
+## `INSERT`
+
+`INSERT` is used to add new data to a table.
+
+Basic syntax:
+
+```sql
+INSERT INTO table_name (column1, column2)
+VALUES (value1, value2);
+```
+
+Example:
+
+```sql
+INSERT INTO favorites (language, problem)
+VALUES ('Python', 'Mario');
+```
+
+This adds a new row to the `favorites` table.
+
+## `UPDATE`
+
+`UPDATE` is used to modify existing data.
+
+Basic syntax:
+
+```sql
+UPDATE table_name
+SET column = value
+WHERE condition;
+```
+
+Example:
+
+```sql
+UPDATE favorites
+SET language = 'C'
+WHERE language = 'Python';
+```
+
+`WHERE` specifies which rows should be updated.
+
+Without `WHERE`, the update can affect all rows in the table.
+
+## `DELETE`
+
+`DELETE` is used to remove data from a table.
+
+Basic syntax:
+
+```sql
+DELETE FROM table_name
+WHERE condition;
+```
+
+Example:
+
+```sql
+DELETE FROM favorites
+WHERE language = 'Python';
+```
+
+This removes the rows that match the condition.
+
+## Using `WHERE`
+
+Both `UPDATE` and `DELETE` can use `WHERE` to select specific rows.
+
+```sql
+UPDATE favorites
+SET problem = 'Mario'
+WHERE language = 'C';
+```
+
+```sql
+DELETE FROM favorites
+WHERE language = 'C';
+```
 
